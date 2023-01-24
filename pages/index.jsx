@@ -14,14 +14,14 @@ const Home = ({ auth }) => {
 
 					<nav id='navbar' className='navbar'>
 						<ul>
-							<li>
+							{/* <li>
 								<Link className='nav-link scrollto active' href='/'>
 									Home
 								</Link>
-							</li>
+							</li> */}
 							<li>
-								<Link className='nav-link scrollto' href='#about'>
-									About
+								<Link className='nav-link scrollto' href='/profile'>
+									Profile
 								</Link>
 							</li>
 							<li>

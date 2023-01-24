@@ -37,7 +37,7 @@ const Home = ({ auth }) => {
 			<section id='hero' className='hero d-flex align-items-center'>
 				<div className='container'>
 					<div className='row'>
-						<div className='col-lg-12 d-flex flex-column justify-content-center'>
+						<div className='col-lg-6 d-flex flex-column justify-content-center'>
 							<h1>We offer modern solutions for growing your business</h1>
 							{/* <h2  data-aos-delay='400'>
 								We are team of talented designers making websites with Bootstrap
@@ -45,15 +45,27 @@ const Home = ({ auth }) => {
 							<div data-aos-delay='600'>
 								<div className='text-center text-lg-start'>
 									<a className='btn-get-started d-flex align-items-center justify-content-center align-self-center'>
-										<span>Welcome, {user.displayName}</span> &nbsp; &nbsp;
-										<span>Email: {user.email}</span>
+										<span>Welcome, {user.displayName} </span>
+										<i className='bi bi-arrow-right'></i>
+									</a>
+								</div>
+							</div>
+							<div data-aos-delay='600'>
+								<div className='text-center text-lg-start'>
+									<a className='btn-get-started d-flex align-items-center justify-content-center align-self-center'>
+										<span> Email: {user.email}</span>
 										<i className='bi bi-arrow-right'></i>
 									</a>
 								</div>
 							</div>
 						</div>
 						<div className='col-lg-6 hero-img' data-aos-delay='200'>
-							<img src={user.photoURL} className='img-fluid' alt='' />
+							<img
+								src={user.photoURL}
+								width='100%'
+								className='img-fluid rounded-50'
+								alt=''
+							/>
 						</div>
 					</div>
 				</div>
