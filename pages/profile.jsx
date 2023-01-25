@@ -58,7 +58,7 @@ const Profile = ({ auth }) => {
 							<div data-aos-delay='600'>
 								<div className='text-center text-lg-start'>
 									<a className='btn-get-started d-flex align-items-center justify-content-center align-self-center'>
-										<span> Email: {user.email}</span>
+										<span>{user.email}</span>
 										<i className='bi bi-arrow-right'></i>
 									</a>
 								</div>
