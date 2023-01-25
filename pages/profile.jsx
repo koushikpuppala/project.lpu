@@ -1,7 +1,12 @@
 import { withProtected } from '../context'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import Main from '../context/main.js'
 
-const Home = ({ auth }) => {
+const Profile = ({ auth }) => {
+	useEffect(() => {
+		Main()
+	}, [])
 	const { user, error, login, logout, setUser } = auth
 	return (
 		<>
@@ -20,14 +25,14 @@ const Home = ({ auth }) => {
 								</Link>
 							</li>
 							<li>
-								<span
+								<a
 									className='getstarted scrollto'
 									onClick={user ? logout : login}
 									style={{
 										cursor: 'pointer',
 									}}>
 									{user ? 'Logout' : 'Login'}
-								</span>
+								</a>
 							</li>
 						</ul>
 						<i className='bi bi-list mobile-nav-toggle'></i>
@@ -74,4 +79,4 @@ const Home = ({ auth }) => {
 	)
 }
 
-export default withProtected(Home)
+export default withProtected(Profile)
