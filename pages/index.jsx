@@ -5,7 +5,7 @@ const Home = ({ auth }) => {
 	const { user, login } = auth
 	return (
 		<Layout auth={auth}>
-			<div className='container flex h-screen items-center px-16'>
+			<div className='container flex min-h-screen items-center px-16'>
 				<div className='grid auto-cols-auto grid-flow-col'>
 					<div className='flex flex-col justify-center text-center'>
 						<h1 data-aos='fade-up'>

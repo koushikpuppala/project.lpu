@@ -55,6 +55,11 @@ export const withVerified = Component => {
 				router.push('/', '/', { shallow: true })
 			}, [])
 			return <Loading />
+		} else if (localStorage.getItem('isVerified') === 'true') {
+			useEffect(() => {
+				router.push('/profile', '/profile', { shallow: true })
+			}, [])
+			return <Loading />
 		}
 
 		return (

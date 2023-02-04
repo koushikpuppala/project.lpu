@@ -19,7 +19,7 @@ const Verify = ({ auth }) => {
 	}, [user])
 	return (
 		<Layout auth={auth}>
-			<div className='container flex h-screen items-center justify-center'>
+			<div className='container flex min-h-screen items-center justify-center'>
 				<div className='box overflow-hidden bg-transparent shadow-2xl sm:rounded-lg'>
 					<div className='px-4 py-5 sm:px-6'>
 						<h3 className='text-lg font-medium leading-6 text-gray-900'>

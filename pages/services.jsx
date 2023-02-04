@@ -2,29 +2,16 @@ import { withPublic } from '../context'
 import Layout from '../components/layout'
 import { Mall } from '../src/images'
 import Image from 'next/image'
-import {
-	Button,
-	Dialog,
-	DialogContent,
-	DialogTitle,
-	IconButton,
-	Typography,
-	Grid,
-} from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
-import { useState } from 'react'
+import { Button } from '@mui/material'
+import { useRouter } from 'next/router'
 
 const Services = ({ auth }) => {
-	const { user } = auth
-	const [open, setOpen] = useState(false)
+	const router = useRouter()
 
-	const handleClickOpen = data => {
-		setOpen(true)
+	const handleClickOpen = () => {
+		router.push('/booking')
 	}
 
-	const handleClose = () => {
-		setOpen(false)
-	}
 	const products = [
 		{
 			id: 1,
@@ -89,35 +76,6 @@ const Services = ({ auth }) => {
 										Book an appointment
 									</Button>
 								</div>
-
-								<Dialog
-									onClose={() => handleClose(data)}
-									aria-labelledby='customized-dialog-title'
-									open={open}>
-									<DialogTitle
-										sx={{ m: 0, p: 2 }}
-										id='customized-dialog-title'>
-										{product.name}
-										{handleClose ? (
-											<IconButton
-												aria-label='close'
-												onClick={handleClose}
-												sx={{
-													position: 'absolute',
-													right: 8,
-													top: 8,
-													color: theme => theme.palette.grey[500],
-												}}>
-												<CloseIcon />
-											</IconButton>
-										) : null}
-									</DialogTitle>
-									<DialogContent dividers>
-										<Typography>
-											<b>Description:</b>
-										</Typography>
-									</DialogContent>
-								</Dialog>
 							</div>
 						))}
 					</div>
