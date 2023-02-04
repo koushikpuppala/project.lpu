@@ -10,7 +10,7 @@ export const useAuth = () => {
 	return useContext(authContext)
 }
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
 	const [user, setUser] = useState(null)
 	const [error, setError] = useState()
 	const router = useRouter()
@@ -18,9 +18,23 @@ export const AuthProvider = (props) => {
 	const login = async () => {
 		const { error, user } = await AuthService.login()
 		console.log(user, error)
+		if (
+			localStorage.getItem('email') === user.email &&
+			localStorage.getItem('isVerified') === 'true'
+		) {
+			const isVerified = localStorage.getItem('isVerified')
+			localStorage.setItem('isVerified', isVerified)
+			localStorage.setItem('email', user.email)
+			router.push('/profile')
+			return
+		} else {
+			localStorage.setItem('isVerified', false)
+			localStorage.setItem('email', user.email)
+			localStorage.setItem('number', null)
+		}
+		router.push('/verify', '/verify', { shallow: true })
 		setUser(user ?? null)
 		setError(error ?? '')
-		router.push('/profile')
 	}
 
 	const logout = async () => {
@@ -49,7 +63,8 @@ export const AuthStateChange = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
+		onAuthStateChanged(auth, user => {
+			user.phone = localStorage.getItem('number')
 			setUser(user)
 			setLoading(false)
 		})

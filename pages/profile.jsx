@@ -1,81 +1,55 @@
 import { withProtected } from '../context'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import Main from '../context/main.js'
+import Layout from '../components/layout'
+import Image from 'next/image'
 
 const Profile = ({ auth }) => {
-	useEffect(() => {
-		Main()
-	}, [])
-	const { user, error, login, logout, setUser } = auth
+	const { user } = auth
 	return (
-		<>
-			<header id='header' className='header fixed-top'>
-				<div className='container-fluid container-xl d-flex align-items-center justify-content-between'>
-					<a href='/' className='logo d-flex align-items-center'>
-						<img src='assets/img/logo.png' alt='' />
-						<span>FlexStart</span>
-					</a>
-
-					<nav id='navbar' className='navbar'>
-						<ul>
-							<li>
-								<Link className='nav-link scrollto active' href='/'>
-									Home
-								</Link>
-							</li>
-							<li>
-								<a
-									className='getstarted scrollto'
-									onClick={user ? logout : login}
-									style={{
-										cursor: 'pointer',
-									}}>
-									{user ? 'Logout' : 'Login'}
-								</a>
-							</li>
-						</ul>
-						<i className='bi bi-list mobile-nav-toggle'></i>
-					</nav>
-				</div>
-			</header>
-			<section id='hero' className='hero d-flex align-items-center'>
-				<div className='container'>
-					<div className='row'>
-						<div className='col-lg-6 d-flex flex-column justify-content-center'>
-							<h1>We offer modern solutions for growing your business</h1>
-							{/* <h2  data-aos-delay='400'>
-								We are team of talented designers making websites with Bootstrap
-							</h2> */}
-							<div data-aos-delay='600'>
-								<div className='text-center text-lg-start'>
-									<a className='btn-get-started d-flex align-items-center justify-content-center align-self-center'>
-										<span>Welcome, {user.displayName} </span>
-										<i className='bi bi-arrow-right'></i>
-									</a>
-								</div>
+		<Layout auth={auth}>
+			<div className='container flex h-screen items-center justify-center px-16'>
+				<div className='box overflow-hidden bg-transparent shadow-2xl sm:rounded-lg'>
+					<div className='px-4 py-5 sm:px-6'>
+						<h3 className='text-lg font-medium leading-6 text-gray-900'>
+							Profile Information
+						</h3>
+					</div>
+					<div className='border-t border-gray-300'>
+						<dl>
+							<div className='items-center bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+								<dt className='text-sm font-medium text-gray-500'>Profile Pic</dt>
+								<dd className='mt-1 flex justify-center text-sm text-gray-900 sm:col-span-2 sm:mt-0 sm:justify-start'>
+									<Image
+										src={user.photoURL}
+										alt='Profile Picture'
+										className='rounded-full'
+										width={75}
+										height={75}
+									/>
+								</dd>
 							</div>
-							<div data-aos-delay='600'>
-								<div className='text-center text-lg-start'>
-									<a className='btn-get-started d-flex align-items-center justify-content-center align-self-center'>
-										<span>{user.email}</span>
-										<i className='bi bi-arrow-right'></i>
-									</a>
-								</div>
+							<div className='bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+								<dt className='text-sm font-medium text-gray-500'>Full name</dt>
+								<dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
+									{user.displayName}
+								</dd>
 							</div>
-						</div>
-						<div className='col-lg-6 hero-img' data-aos-delay='200'>
-							<img
-								src={user.photoURL}
-								width='100%'
-								className='img-fluid rounded-50'
-								alt=''
-							/>
-						</div>
+							<div className='bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+								<dt className='text-sm font-medium text-gray-500'>Email address</dt>
+								<dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
+									{user.email}
+								</dd>
+							</div>
+							<div className='bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+								<dt className='text-sm font-medium text-gray-500'>Phone Number</dt>
+								<dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
+									+91 {user.phone}
+								</dd>
+							</div>
+						</dl>
 					</div>
 				</div>
-			</section>
-		</>
+			</div>
+		</Layout>
 	)
 }
 

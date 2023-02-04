@@ -9,6 +9,9 @@ const nextConfig = withPWA({
 })({
 	reactStrictMode: process.env.NODE_ENV === 'development' ? false : true,
 	swcMinify: true,
+	images: {
+		domains: ['lh3.googleusercontent.com']
+	}
 })
 
 module.exports = nextConfig

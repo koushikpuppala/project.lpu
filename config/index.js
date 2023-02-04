@@ -3,12 +3,13 @@ import { getAnalytics } from 'firebase/analytics'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyDyk_1HIsWgC-ccCp2DkqpdLt8bgTo3J7s',
-	authDomain: 'all-applications-testing.firebaseapp.com',
-	projectId: 'all-applications-testing',
-	storageBucket: 'all-applications-testing.appspot.com',
-	messagingSenderId: '999706182692',
-	appId: '1:999706182692:web:b1039e08800618791684b1',
+	apiKey: 'AIzaSyAPlo65QG7IEFgega7RAPAHIm8RZiQo4wA',
+	authDomain: 'project-lpu.firebaseapp.com',
+	projectId: 'project-lpu',
+	storageBucket: 'project-lpu.appspot.com',
+	messagingSenderId: '354555805743',
+	appId: '1:354555805743:web:0ba902b3e1bd4b0010c6da',
+	measurementId: 'G-3G54H42ZB1',
 }
 
 if (!getApps().length) {

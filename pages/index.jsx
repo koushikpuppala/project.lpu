@@ -1,85 +1,54 @@
 import { withPublic } from '../context'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import Main from '../context/main.js'
+import Layout from '../components/layout'
 
 const Home = ({ auth }) => {
-	useEffect(() => {
-		Main()
-	}, [])
-	const { user, error, login, logout, setUser } = auth
+	const { user, login } = auth
 	return (
-		<>
-			<header id='header' className='header fixed-top'>
-				<div className='container-fluid container-xl d-flex align-items-center justify-content-between'>
-					<a href='/' className='logo d-flex align-items-center'>
-						<img src='assets/img/logo.png' alt='' />
-						<span>FlexStart</span>
-					</a>
-
-					<nav id='navbar' className='navbar'>
-						<ul>
-							{/* <li>
-								<Link className='nav-link scrollto active' href='/'>
-									Home
-								</Link>
-							</li> */}
-							<li>
-								<Link className='nav-link scrollto' href='/profile'>
-									Profile
-								</Link>
-							</li>
-							<li>
-								<a
-									className='getstarted scrollto'
-									onClick={user ? logout : login}
-									style={{
-										cursor: 'pointer',
-									}}>
-									{user ? 'Logout' : 'Login'}
-								</a>
-							</li>
-						</ul>
-						<i className='bi bi-list mobile-nav-toggle'></i>
-					</nav>
-				</div>
-			</header>
-			<section id='hero' className='hero d-flex align-items-center'>
-				<div className='container'>
-					<div className='row'>
-						<div className='col-lg-6 d-flex flex-column justify-content-center'>
-							<h1 data-aos='fade-up'>
-								We offer modern solutions for growing your business
-							</h1>
-							<h2 data-aos='fade-up' data-aos-delay='400'>
-								We are team of talented designers making websites
-							</h2>
-							<div data-aos='fade-up' data-aos-delay='600'>
-								<div className='text-center text-lg-start'>
-									{user ? (
-										<a className='btn-get-started d-inline-flex align-items-center justify-content-center align-self-center'>
-											<span>Welcome, {user.displayName}</span>
-											<i className='bi bi-arrow-right'></i>
-										</a>
-									) : (
-										<a
-											onClick={login}
-											style={{ cursor: 'pointer' }}
-											className='btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center'>
-											<span>Get Started</span>
-											<i className='bi bi-arrow-right'></i>
-										</a>
-									)}
-								</div>
+		<Layout auth={auth}>
+			<div className='container flex h-screen items-center px-16'>
+				<div className='grid auto-cols-auto grid-flow-col'>
+					<div className='flex flex-col justify-center text-center'>
+						<h1 data-aos='fade-up'>
+							We offer modern solutions for growing your business
+						</h1>
+						<h2
+							data-aos='fade-up'
+							data-aos-delay='400'>
+							We are team of talented designers making websites
+						</h2>
+						<div
+							data-aos='fade-up'
+							data-aos-delay='600'>
+							<div className='text-lg-start text-center'>
+								{user ? (
+									<a className='btn-get-started inline-flex items-center justify-center self-center'>
+										<span>Welcome, {user.displayName}</span>
+										<i className='bi bi-arrow-right'></i>
+									</a>
+								) : (
+									<a
+										onClick={login}
+										style={{ cursor: 'pointer' }}
+										className='btn-get-started inline-flex items-center justify-center self-center'>
+										<span>Get Started</span>
+										<i className='bi bi-arrow-right'></i>
+									</a>
+								)}
 							</div>
 						</div>
-						<div className='col-lg-6 hero-img' data-aos='zoom-out' data-aos-delay='200'>
-							<img src='/hero-img.png' className='img-fluid' alt='' />
-						</div>
+					</div>
+					<div
+						className='hero-img hidden justify-center md:flex'
+						data-aos='zoom-out'
+						data-aos-delay='200'>
+						<img
+							src='/hero-img.png'
+							alt=''
+						/>
 					</div>
 				</div>
-			</section>
-		</>
+			</div>
+		</Layout>
 	)
 }
 

@@ -1,2 +1,2 @@
 export { useAuth, AuthProvider, AuthStateChange } from './auth'
-export { withPublic, withProtected } from './protected'
+export { withPublic, withProtected, withVerified } from './protected'
