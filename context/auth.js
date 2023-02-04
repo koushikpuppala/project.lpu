@@ -64,7 +64,7 @@ export const AuthStateChange = ({ children }) => {
 
 	useEffect(() => {
 		onAuthStateChanged(auth, user => {
-			user.phone = localStorage.getItem('number')
+			user ? (user.phone = localStorage.getItem('number')) : null
 			setUser(user)
 			setLoading(false)
 		})
