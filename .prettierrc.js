@@ -11,7 +11,6 @@ module.exports = {
 	jsxBracketSameLine: true,
 	singleAttributePerLine: true,
 	arrowParens: 'avoid',
-	plugins: [require('prettier-plugin-tailwindcss')],
 	overrides: [
 		{
 			files: '*.yml',

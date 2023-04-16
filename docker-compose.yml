@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: ${NODE_ENV}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+    networks:
+      - project.lpu
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: ${NODE_ENV}
+    ports:
+      - '8080:8080'
+    depends_on:
+      - blockchain
+    networks:
+      - project.lpu
+
+networks:
+  project.lpu:
+    driver: bridge

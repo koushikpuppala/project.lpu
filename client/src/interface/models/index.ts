@@ -1,0 +1,6 @@
+export type { BlockDocument } from './block'
+export type { BookingDocument } from './booking'
+export type { PaymentDocument } from './payment'
+export type { ServiceDocument } from './service'
+export type { UserDocument } from './users'
+export type { VerificationDocument } from './verification'

@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
-import createEmotionCache from '../src/createEmotionCache'
+import { createEmotionCache } from '@import/theme'
+import Script from 'next/script'
 
 export default class MyDocument extends Document {
 	render() {
@@ -15,7 +16,7 @@ export default class MyDocument extends Document {
 						name='emotion-insertion-point'
 						content=''
 					/>
-					{this.props.emotionStyleTags}
+					{(this.props as any).emotionStyleTags}
 					<link
 						rel='preconnect'
 						href='https://fonts.googleapis.com/'
@@ -34,21 +35,13 @@ export default class MyDocument extends Document {
 						rel='stylesheet'
 						href='https://fonts.googleapis.com/icon?family=Material+Icons'
 					/>
-					<Script
-						strategy='afterInteractive'
-						src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js'
-						integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3'
-						crossOrigin='anonymous'
-					/>
-					<Script
-						strategy='afterInteractive'
-						src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js'
-						integrity='sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V'
-						crossOrigin='anonymous'
-					/>
 				</Head>
 				<body>
 					<Main />
+					<Script
+						src='https://checkout.razorpay.com/v1/checkout.js'
+						strategy='beforeInteractive'
+					/>
 					<NextScript />
 				</body>
 			</Html>
@@ -64,7 +57,7 @@ MyDocument.getInitialProps = async ctx => {
 
 	ctx.renderPage = () =>
 		originalRenderPage({
-			enhanceApp: App =>
+			enhanceApp: (App: any) =>
 				function EnhanceApp(props) {
 					return (
 						<App
@@ -77,7 +70,7 @@ MyDocument.getInitialProps = async ctx => {
 
 	const initialProps = await Document.getInitialProps(ctx)
 	const emotionStyles = extractCriticalToChunks(initialProps.html)
-	const emotionStyleTags = emotionStyles.styles.map(style => (
+	const emotionStyleTags = emotionStyles.styles.map((style: any) => (
 		<style
 			data-emotion={`${style.key} ${style.ids.join(' ')}`}
 			key={style.key}

@@ -1,0 +1,6 @@
+export { default as Blocks } from './block'
+export { default as Bookings } from './booking'
+export { default as Payments } from './payment'
+export { default as Services } from './service'
+export { default as Users } from './users'
+export { default as Verifications } from './verification'

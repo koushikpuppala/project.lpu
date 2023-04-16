@@ -1,0 +1,6 @@
+export { BlockDocument } from './block'
+export { BookingDocument } from './booking'
+export { PaymentDocument } from './payment'
+export { ServiceDocument } from './service'
+export { UserDocument } from './users'
+export { VerificationDocument } from './verification'
