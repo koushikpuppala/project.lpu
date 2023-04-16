@@ -60,10 +60,11 @@ export const AuthProvider = ({ children }: RouteProps) => {
 		}, 1000)
 	}, [])
 
-	if (!loading)
-		return (
-			<AuthContext.Provider value={{ user, login, logout, setUser }}>
-				{children}
-			</AuthContext.Provider>
-		)
+	if (loading) return null
+
+	return (
+		<AuthContext.Provider value={{ user, login, logout, setUser }}>
+			{children}
+		</AuthContext.Provider>
+	)
 }
