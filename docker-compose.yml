@@ -5,22 +5,18 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-      target: ${NODE_ENV}
     ports:
       - '3000:3000'
     depends_on:
-      - backend
+      - server
     networks:
       - project.lpu
-  backend:
+  server:
     build:
-      context: ./backend
+      context: ./server
       dockerfile: Dockerfile
-      target: ${NODE_ENV}
     ports:
       - '8080:8080'
-    depends_on:
-      - blockchain
     networks:
       - project.lpu
 
