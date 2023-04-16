@@ -132,7 +132,7 @@ export const paymentController = {
 					userId: user.id,
 					isPaid: true,
 				})
-				return res.status(200).send({ message: 'Payment successful' })
+				return res.status(200).send({ message: 'Payment successful', payment })
 			}
 
 			return res.status(400).send({ error: 'Payment failed' })

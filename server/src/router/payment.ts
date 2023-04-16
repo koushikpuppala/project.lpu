@@ -9,4 +9,5 @@ router.post('/', paymentController.createPayment)
 router.put('/:id', paymentController.updatePayment)
 router.delete('/:id', paymentController.deletePayment)
 router.post('/checkout', paymentController.createOrder)
+router.post('/verify', paymentController.verifyPayment)
 export default router
