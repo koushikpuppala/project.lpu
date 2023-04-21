@@ -1,4 +1,3 @@
-import { FirebaseOptions } from 'firebase/app'
 import { ConnectOptions } from 'mongoose'
 
 export interface Config {
