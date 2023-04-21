@@ -13,7 +13,7 @@ export const config: Config = {
 		'http://127.0.0.1:3000',
 		'localhost',
 		'http://localhost:3000',
-		'https://stingray-app-76vch.ondigitalocean.app',
+		'https://project-lpu.vercel.app',
 	],
 	mongodb: {
 		uri: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@project-lpu.lwzwpqy.mongodb.net/?retryWrites=true&w=majority`,
