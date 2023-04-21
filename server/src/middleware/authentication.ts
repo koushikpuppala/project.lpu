@@ -8,7 +8,7 @@ export const Authentication = async (req: UserRequest, res: Response, next: Next
 	const token = req.headers.authorization?.split(' ')[1]
 	if (token) {
 		try {
-			const decoded = jwt.verify(token, config.secret)
+			const decoded = jwt.verify(token, config.razorpay.key_secret)
 			const user = await Users.findById(decoded)
 			if (user) {
 				req.user = user
