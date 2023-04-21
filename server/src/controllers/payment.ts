@@ -129,7 +129,7 @@ export const paymentController = {
 					orderId: razorpay_payment_id,
 					signature: razorpay_signature,
 					amount: order.amount,
-					userId: user.id,
+					userId: user.uid,
 					isPaid: true,
 				})
 				return res.status(200).send({ message: 'Payment successful', payment })

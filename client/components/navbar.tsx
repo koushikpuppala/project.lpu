@@ -12,8 +12,7 @@ const Navbar = () => {
 
 	const navigation = [
 		{ name: 'Home', href: '/' },
-		// { name: 'About', href: '/about' },
-		{ name: 'Services', href: '/booking' },
+		{ name: 'Book service', href: '/booking' },
 	]
 
 	const classNames = (...classes: string[]) => {
@@ -84,7 +83,6 @@ const Navbar = () => {
 								</div>
 							</div>
 							<div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-								{/* Profile dropdown */}
 								{user ? (
 									<Menu
 										as='div'
@@ -157,12 +155,6 @@ const Navbar = () => {
 									key={item.name}
 									as='a'
 									href={item.href}
-									// className={classNames(
-									// 	item.current
-									// 		? 'bg-gray-900 text-white'
-									// 		: 'text-gray-300 hover:bg-gray-700 hover:text-white',
-									// 	'block rounded-md px-3 py-2 text-base font-medium'
-									// )}
 									className='block rounded-md px-6 py-2 text-lg font-medium text-gray-900'>
 									{item.name}
 								</Disclosure.Button>

@@ -2,12 +2,9 @@ import { RouteProps } from '@import/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AuthService, auth } from '@import/services'
 import { AuthContextProps, UserDocument } from '@import/interface'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { onAuthStateChanged } from 'firebase/auth'
-import { LoadingSpinner } from '@import/components'
-import { toast } from 'react-toastify'
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps)
 

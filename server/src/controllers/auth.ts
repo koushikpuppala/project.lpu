@@ -5,7 +5,7 @@ export const authController = async (req: Request, res: Response) => {
 	const { user, credential } = req.body
 
 	try {
-		const userExist = await Users.exists({ _id: user.uid })
+		const userExist = await Users.exists({ uid: user.uid })
 		if (!userExist) {
 			const User = new Users({
 				_id: user.uid,

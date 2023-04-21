@@ -6,11 +6,11 @@ export const userController = {
 		const { user } = req.body
 
 		try {
-			const userExist = await Users.exists({ _id: user._id })
+			const userExist = await Users.exists({ uid: user.uid })
 
 			userExist &&
 				res.status(200).send({
-					user: await Users.findOne({ _id: user._id }),
+					user: await Users.findOne({ uid: user.uid }),
 				})
 
 			const newUser = await Users.create(user)
@@ -58,7 +58,7 @@ export const userController = {
 		const { user } = req.body
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -75,7 +75,7 @@ export const userController = {
 		const { id } = req.params
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -92,7 +92,7 @@ export const userController = {
 		const { id } = req.params
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -109,7 +109,7 @@ export const userController = {
 		const { id } = req.params
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -127,7 +127,7 @@ export const userController = {
 		const { date } = req.body
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -148,7 +148,7 @@ export const userController = {
 		const { service } = req.body
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 
@@ -169,7 +169,7 @@ export const userController = {
 		const { service, date } = req.body
 
 		try {
-			const userExist = await Users.exists({ _id: id })
+			const userExist = await Users.exists({ uid: id })
 
 			!userExist && res.status(404).send({ error: 'User not found' })
 

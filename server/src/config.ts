@@ -16,7 +16,7 @@ export const config: Config = {
 		'https://project-lpu.vercel.app',
 	],
 	mongodb: {
-		uri: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@project-lpu.lwzwpqy.mongodb.net/?retryWrites=true&w=majority`,
+		uri: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@project-lpu.lwzwpqy.mongodb.net/${process.env.MONGO_DATA}?retryWrites=true&w=majority`,
 		options: {
 			connectTimeoutMS: 10000,
 			socketTimeoutMS: 45000,

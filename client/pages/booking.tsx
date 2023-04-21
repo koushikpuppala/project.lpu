@@ -3,11 +3,9 @@ import Image from 'next/image'
 import { Button, TextField, MenuItem } from '@mui/material'
 import { PrivateRoute, useAuth } from '@import/components'
 import axios from 'axios'
-import { BlockDocument, ServiceDocument } from '@import/src/interface'
 import { services, blocks } from '@import/constant'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Router } from 'next/router'
 import { toast } from 'react-toastify'
 
 const BookingPage = () => {
@@ -20,24 +18,18 @@ const BookingPage = () => {
 			data: { order, key },
 		} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/payment/checkout`, {
 			amount: amount,
-			user: {
-				uid: user?.uid,
-				name: user?.name,
-				email: user?.email,
-				phone: user?.phone,
-			},
+			user,
 		})
 		console.log(order, key)
 
 		var options = {
-			key: key, // Enter the Key ID generated from the Dashboard
-			amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			key: key,
+			amount: order.amount,
 			currency: 'INR',
-			name: 'PROJECT LPU', //your business name
+			name: 'PROJECT LPU',
 			description: 'Test Transaction',
 			image: '/favicon.ico',
-			order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-			// callback_url: 'https://eneqd3r9zrjok.x.pipedream.net/',
+			order_id: order.id,
 			handler: function (response: any) {
 				axios
 					.post(`${process.env.NEXT_PUBLIC_API_URL}/payment/verify`, {
