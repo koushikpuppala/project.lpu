@@ -25,7 +25,7 @@ const PrivateRoute = ({ children }: RouteProps) => {
 			toast.error('You must verify your phone to view that page')
 			return router.push('/verify')
 		}
-	}, [router, user])
+	}, [])
 
 	return user ? <>{children}</> : null
 }
