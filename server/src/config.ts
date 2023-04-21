@@ -8,7 +8,6 @@ dotenv.config({
 export const config: Config = {
 	hostname: process.env.HOSTNAME!,
 	port: 8080,
-	secret: process.env.JWT_SECRET!,
 	whitelist: [
 		'http://127.0.0.1:3000',
 		'localhost',
