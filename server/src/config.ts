@@ -9,7 +9,12 @@ export const config: Config = {
 	hostname: process.env.HOSTNAME!,
 	port: 8080,
 	secret: process.env.JWT_SECRET!,
-	whitelist: ['http://127.0.0.1:3000', 'localhost', 'http://localhost:3000'],
+	whitelist: [
+		'http://127.0.0.1:3000',
+		'localhost',
+		'http://localhost:3000',
+		'https://stingray-app-76vch.ondigitalocean.app',
+	],
 	mongodb: {
 		uri: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@project-lpu.lwzwpqy.mongodb.net/?retryWrites=true&w=majority`,
 		options: {
