@@ -28,6 +28,7 @@ const Profile = () => {
 											className='rounded-full'
 											width={75}
 											height={75}
+											priority={true}
 										/>
 									</dd>
 								</div>

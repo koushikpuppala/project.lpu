@@ -12,7 +12,7 @@ import { CacheProvider } from '@emotion/react'
 import { theme, createEmotionCache } from '@import/theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { config } from '@import/config'
-import { AuthProvider } from '@import/components'
+import { AuthProvider, AuthStateChanged } from '@import/components'
 
 export default function App({ Component, pageProps }: AppProps) {
 	useEffect(() => {
@@ -21,18 +21,20 @@ export default function App({ Component, pageProps }: AppProps) {
 
 	return (
 		<AuthProvider>
-			<CacheProvider value={createEmotionCache()}>
-				<ThemeProvider theme={theme}>
-					<CssBaseline enableColorScheme={true}>
-						<ToastContainer
-							theme='dark'
-							position='top-center'
-							transition={Zoom}
-						/>
-						<Component {...pageProps} />
-					</CssBaseline>
-				</ThemeProvider>
-			</CacheProvider>
+			<AuthStateChanged>
+				<CacheProvider value={createEmotionCache()}>
+					<ThemeProvider theme={theme}>
+						<CssBaseline enableColorScheme={true}>
+							<ToastContainer
+								theme='dark'
+								position='top-center'
+								transition={Zoom}
+							/>
+							<Component {...pageProps} />
+						</CssBaseline>
+					</ThemeProvider>
+				</CacheProvider>
+			</AuthStateChanged>
 		</AuthProvider>
 	)
 }

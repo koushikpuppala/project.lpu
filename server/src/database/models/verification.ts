@@ -6,7 +6,7 @@ export default models.Verifications ||
 		'Verifications',
 		new Schema({
 			user: {
-				type: Schema.Types.ObjectId,
+				type: String,
 				ref: 'Users',
 			},
 			phone: String,

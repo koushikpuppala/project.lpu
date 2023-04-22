@@ -1,7 +1,7 @@
 import { Document, Types } from 'mongoose'
 
 export interface PaymentDocument extends Document {
-	userId: Types.ObjectId
+	userId: string
 	bookingId: Types.ObjectId
 	amount: number
 	isPaid: boolean

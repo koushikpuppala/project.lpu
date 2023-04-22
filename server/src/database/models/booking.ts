@@ -10,7 +10,7 @@ export default models.Bookings ||
 				ref: 'Payments',
 			},
 			userId: {
-				type: Schema.Types.ObjectId,
+				type: String,
 				ref: 'Users',
 			},
 			services: [

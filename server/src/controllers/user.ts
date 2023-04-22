@@ -7,19 +7,20 @@ export const userController = {
 
 		try {
 			const userExist = await Users.exists({ uid: user.uid })
+			console.log(userExist)
 
-			userExist &&
-				res.status(200).send({
+			if (userExist)
+				return res.status(200).send({
 					user: await Users.findOne({ uid: user.uid }),
 				})
 
-			const newUser = await Users.create(user)
+			console.log('test')
 
-			return res.status(200).send({ user: newUser })
+			return res.status(200).send({ user: await Users.create(user) })
 		} catch (error) {
 			console.error(error)
 
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -28,17 +29,18 @@ export const userController = {
 
 		try {
 			const userExist = await Users.exists({ uid: id })
+			console.log(userExist)
 
-			!userExist && res.status(404).send({ error: 'User not found' })
+			if (!userExist) return res.status(404).send({ error: 'User not found' })
 
 			const User = await Users.findOne({
 				uid: id,
 			})
 
-			return res.status(200).send({ user: User })
+			res.status(200).send({ user: User })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -46,10 +48,10 @@ export const userController = {
 		try {
 			const users = await Users.find()
 
-			return res.status(200).send({ users })
+			res.status(200).send({ users })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -60,14 +62,22 @@ export const userController = {
 		try {
 			const userExist = await Users.exists({ uid: id })
 
-			!userExist && res.status(404).send({ error: 'User not found' })
+			console.log(userExist)
 
-			const User = await Users.findByIdAndUpdate(id, user, { new: true })
+			if (!userExist) return res.status(404).send({ error: 'User not found' })
 
-			return res.status(200).send({ user: User })
+			return res.status(200).send({
+				user: await Users.findOneAndUpdate(
+					{
+						uid: id,
+					},
+					user,
+					{ new: true }
+				),
+			})
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -81,10 +91,10 @@ export const userController = {
 
 			await Users.findByIdAndDelete(id)
 
-			return res.status(200).send({ message: 'User deleted' })
+			res.status(200).send({ message: 'User deleted' })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -98,10 +108,10 @@ export const userController = {
 
 			const Bookings = await Users.findById(id).populate('bookings')
 
-			return res.status(200).send({ bookings: Bookings?.bookings })
+			res.status(200).send({ bookings: Bookings?.bookings })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -115,10 +125,10 @@ export const userController = {
 
 			const Payments = await Users.findById(id).populate('payments')
 
-			return res.status(200).send({ payments: Payments?.payments })
+			res.status(200).send({ payments: Payments?.payments })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -136,10 +146,10 @@ export const userController = {
 				match: { date: date },
 			})
 
-			return res.status(200).send({ bookings: Bookings?.bookings })
+			res.status(200).send({ bookings: Bookings?.bookings })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -157,10 +167,10 @@ export const userController = {
 				match: { service: service },
 			})
 
-			return res.status(200).send({ bookings: Bookings?.bookings })
+			res.status(200).send({ bookings: Bookings?.bookings })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 
@@ -178,10 +188,10 @@ export const userController = {
 				match: { service: service, date: date },
 			})
 
-			return res.status(200).send({ bookings: Bookings?.bookings })
+			res.status(200).send({ bookings: Bookings?.bookings })
 		} catch (error) {
 			console.error(error)
-			return res.status(500).send({ error: error })
+			res.status(500).send({ error: error })
 		}
 	},
 }

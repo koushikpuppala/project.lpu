@@ -115,6 +115,8 @@ export const paymentController = {
 
 		const body = razorpay_order_id + '|' + razorpay_payment_id
 
+		console.log(req.body)
+
 		try {
 			const expectedSignature = crypto
 				.createHmac('sha256', config.razorpay.key_secret)

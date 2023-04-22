@@ -41,6 +41,7 @@ const Verify = () => {
 											className='rounded-full'
 											width={75}
 											height={75}
+											priority={true}
 										/>
 									</dd>
 								</div>
@@ -153,23 +154,19 @@ const Verify = () => {
 													console.log(code)
 													if (Number(otp) === Number(code)) {
 														axios
-															.put(
-																`${process.env.NEXT_PUBLIC_API_URL}/user/${user?._id}`,
+															.post(
+																`${process.env.NEXT_PUBLIC_API_URL}/verify/code`,
 																{
-																	user: {
-																		phone: phone,
-																		isVerified: true,
-																	},
+																	phone: phone,
+																	uid: user?.uid,
+																	code: code,
 																}
 															)
 															.then(res => {
 																console.log(res.data)
+																setUser(res.data.user)
 															})
-														setUser(user)
-														router.push('/profile', '/profile', {
-															shallow: true,
-														})
-														return
+														router.push('/profile')
 													} else {
 														alert('Invalid OTP')
 													}

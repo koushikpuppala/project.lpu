@@ -67,6 +67,7 @@ const Navbar = () => {
 										src={Logo}
 										alt='Logo'
 										className='block h-6 w-auto lg:hidden'
+										priority={true}
 									/>
 								</div>
 								<div className='hidden sm:ml-6 sm:block'>
@@ -95,7 +96,8 @@ const Navbar = () => {
 													width={75}
 													height={75}
 													src={user.avatar}
-													alt=''
+													alt='Avatar'
+													priority={true}
 												/>
 											</Menu.Button>
 										</div>

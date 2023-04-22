@@ -6,7 +6,7 @@ export default models.Payments ||
 		'Payments',
 		new Schema({
 			userId: {
-				type: Schema.Types.ObjectId,
+				type: String,
 				ref: 'Users',
 			},
 			bookingId: {

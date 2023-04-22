@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { verifyController } from '@import/controllers'
+import { verifyCodeController, verifyController } from '@import/controllers'
 
 const router = Router()
 
 router.post('/', verifyController)
+router.post('/code', verifyCodeController)
 
 export default router
