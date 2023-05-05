@@ -41,12 +41,6 @@
 		/* Completeness */
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"scripts/sitemap-generator.js",
-		"../server/src/interface/models/service.ts"
-	],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/sitemap-generator.js"],
 	"exclude": ["node_modules"]
 }
