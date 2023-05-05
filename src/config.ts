@@ -1,7 +1,6 @@
 import { Config } from '@import/interface'
 
 export const config: Config = {
-	secret: process.env.JWT_SECRET!,
 	firebase: {
 		apiKey: 'AIzaSyAPlo65QG7IEFgega7RAPAHIm8RZiQo4wA',
 		authDomain: 'auth.bookmycut.xyz',
