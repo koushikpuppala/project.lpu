@@ -26,13 +26,10 @@ export const AuthProvider = ({ children }: RouteProps) => {
 					avatar: user?.photoURL,
 				},
 			})
-			console.log(data)
 			setUser(data.user)
 			if (!data.isVerified) return router.push('/verify', '/verify', { shallow: true })
 			return router.push('/profile', '/profile', { shallow: true })
-		} catch (error) {
-			console.log(error)
-		}
+		} catch (error) {}
 	}
 
 	const logout = async () => {
@@ -40,9 +37,7 @@ export const AuthProvider = ({ children }: RouteProps) => {
 			await AuthService.logout()
 			setUser(null)
 			return router.push('/', '/', { shallow: true })
-		} catch (error) {
-			console.log(error)
-		}
+		} catch (error) {}
 	}
 
 	return (
@@ -64,13 +59,10 @@ export const AuthStateChanged = ({ children }: RouteProps) => {
 						`${process.env.NEXT_PUBLIC_API_URL}/user/${user.uid}`
 					)
 					setUser(data.user)
-				} catch (error) {
-					console.log(error)
-				}
+				} catch (error) {}
 			} else {
 				setUser(user)
 			}
-			console.log('test successful')
 			setLoading(false)
 		})
 	}, [])

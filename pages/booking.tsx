@@ -20,7 +20,6 @@ const BookingPage = () => {
 			amount: amount,
 			user,
 		})
-		console.log(order, key)
 
 		var options = {
 			key: key,
@@ -39,9 +38,7 @@ const BookingPage = () => {
 						order,
 						user,
 					})
-					.then(res => {
-						console.log(res)
-					})
+					.then(res => {})
 				router.push(`/profile`)
 				toast.success('Payment Successful')
 			},
@@ -145,14 +142,12 @@ const BookingPage = () => {
 											fullWidth
 											label='Select a service'
 											onChange={e => {
-												console.log(e.target.value)
 												setAmount(Number(e.target.value))
 											}}>
 											{services.map(option => (
 												<MenuItem
 													key={option.price}
-													value={option.price}
-													onChange={() => console.log('changed')}>
+													value={option.price}>
 													{option.name} - {option.price} /-
 												</MenuItem>
 											))}

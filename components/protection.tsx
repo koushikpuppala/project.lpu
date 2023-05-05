@@ -9,7 +9,6 @@ const PrivateRoute = ({ children }: RouteProps) => {
 	const router = useRouter()
 
 	useEffect(() => {
-		console.log(user)
 		if (!user) {
 			toast.warning('You must be logged in to view that page')
 			return router.push('/')

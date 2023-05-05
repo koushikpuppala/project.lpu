@@ -16,7 +16,6 @@ const Verify = () => {
 	const router = useRouter()
 	useEffect(() => {
 		if (user?.isVerified) router.push('/profile')
-		console.log(isNaN(Number(phone)))
 	}, [user])
 	return (
 		<PrivateRoute>
@@ -73,7 +72,6 @@ const Verify = () => {
 												label='Enter Phone Number'
 												sx={{ m: 1 }}
 												onChange={e => {
-													console.log(e.target.value)
 													if (
 														e.target.value.length > 10 ||
 														isNaN(Number(e.target.value))
@@ -113,12 +111,9 @@ const Verify = () => {
 														}
 													)
 													.then(res => {
-														console.log(res.data)
 														setCode(res.data.code)
 													})
-													.catch(err => {
-														console.log(err)
-													})
+													.catch(err => {})
 											}}>
 											Send OTP
 										</Button>
@@ -151,7 +146,6 @@ const Verify = () => {
 												color='success'
 												disabled={otp.length !== 6 || isNaN(Number(phone))}
 												onClick={() => {
-													console.log(code)
 													if (Number(otp) === Number(code)) {
 														axios
 															.post(
@@ -163,7 +157,6 @@ const Verify = () => {
 																}
 															)
 															.then(res => {
-																console.log(res.data)
 																setUser(res.data.user)
 															})
 														router.push('/profile')
