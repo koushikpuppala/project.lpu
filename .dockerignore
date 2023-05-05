@@ -38,14 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Typechain files
-typechain
-typechain-types
-
-# Hardhat files
-cache
-artifacts
-
 # PWA files
 /public/sw.js
 /public/workbox-*.js

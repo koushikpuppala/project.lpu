@@ -17,6 +17,7 @@ import { AuthProvider, AuthStateChanged } from '@import/components'
 export default function App({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		init(config.aos)
+		console.log(process.env.NEXT_PUBLIC_API_URL)
 	}, [])
 
 	return (
