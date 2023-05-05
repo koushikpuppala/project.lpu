@@ -2,7 +2,7 @@
 FROM node:lts
 
 # Set the working directory to /client
-WORKDIR /client
+WORKDIR /
 
 # Copy package.json to the container
 COPY package.json ./
@@ -13,11 +13,11 @@ RUN yarn install
 # Copy the rest of the application code to the container
 COPY . .
 
-# Set the environment variable to production
-ENV NODE_ENV production
-
 # Build the Next.js application for production
 RUN yarn build
+
+# Test folder
+RUN ls -la
 
 # Expose port 3000
 EXPOSE 3000
