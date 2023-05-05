@@ -4,7 +4,7 @@ export const config: Config = {
 	secret: process.env.JWT_SECRET!,
 	firebase: {
 		apiKey: 'AIzaSyAPlo65QG7IEFgega7RAPAHIm8RZiQo4wA',
-		authDomain: 'project-lpu.firebaseapp.com',
+		authDomain: 'auth.bookmycut.xyz',
 		projectId: 'project-lpu',
 		storageBucket: 'project-lpu.appspot.com',
 		messagingSenderId: '354555805743',
