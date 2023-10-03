@@ -7,8 +7,6 @@ const nextConfig = withPWA({
 	register: true,
 	disable: process.env.NODE_ENV === 'production' ? false : true,
 })({
-	reactStrictMode: true,
-	swcMinify: true,
 	images: {
 		domains: ['lh3.googleusercontent.com'],
 	},
