@@ -1,0 +1,20 @@
+declare global {
+	namespace NodeJS {
+		interface ProcessEnv {
+			NEXT_PUBLIC_JWT_SECRET: string
+			NEXT_PUBLIC_FIREBASE_API: string
+			NEXT_PUBLIC_FIREBASE_AUTH: string
+			NEXT_PUBLIC_FIREBASE_PROJECT: string
+			NEXT_PUBLIC_FIREBASE_STORAGE: string
+			NEXT_PUBLIC_FIREBASE_MESSAGING: string
+			NEXT_PUBLIC_FIREBASE_APP: string
+			NEXT_PUBLIC_FIREBASE_MEASUREMENT: string
+			NEXT_PUBLIC_MONGODB_NAME: string
+			NEXT_PUBLIC_MONGODB_USER: string
+			NEXT_PUBLIC_MONGODB_PASS: string
+			NEXT_PUBLIC_MONGODB_DATA: string
+		}
+	}
+}
+
+export {}

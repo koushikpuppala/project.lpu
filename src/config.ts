@@ -1,14 +1,15 @@
 import { Config } from '@import/interface'
 
 export const config: Config = {
+	secret: process.env.NEXT_PUBLIC_JWT_SECRET!,
 	firebase: {
-		apiKey: 'AIzaSyAPlo65QG7IEFgega7RAPAHIm8RZiQo4wA',
-		authDomain: 'auth.bookmycut.xyz',
-		projectId: 'project-lpu',
-		storageBucket: 'project-lpu.appspot.com',
-		messagingSenderId: '354555805743',
-		appId: '1:354555805743:web:0ba902b3e1bd4b0010c6da',
-		measurementId: 'G-3G54H42ZB1',
+		apiKey: process.env.NEXT_PUBLIC_FIREBASE_API,
+		authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH,
+		projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT,
+		storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE,
+		messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING,
+		appId: process.env.NEXT_PUBLIC_FIREBASE_APP,
+		measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT,
 	},
 	aos: {
 		offset: 100,
@@ -16,5 +17,16 @@ export const config: Config = {
 		once: false,
 		mirror: true,
 		useClassNames: true,
+	},
+	mongodb: {
+		uri: `mongodb+srv://${process.env.NEXT_PUBLIC_MONGODB_USER}:${process.env.NEXT_PUBLIC_MONGODB_PASS}@${process.env.NEXT_PUBLIC_MONGODB_DATA}.mongodb.net/${process.env.NEXT_PUBLIC_MONGODB_NAME}?retryWrites=true&w=majority`,
+		options: {
+			connectTimeoutMS: 10000,
+			socketTimeoutMS: 45000,
+			serverSelectionTimeoutMS: 5000,
+			family: 4,
+			maxPoolSize: 100,
+			minPoolSize: 10,
+		},
 	},
 }
