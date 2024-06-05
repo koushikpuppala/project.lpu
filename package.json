@@ -1,6 +1,6 @@
 {
 	"name": "project.lpu",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "BookMyCut is a web application that allows users to book appointments for saloon in LPU.",
 	"main": "next.config.js",
 	"directories": {
